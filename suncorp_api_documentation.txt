@@ -1,0 +1,156 @@
+Suncorp Java Api does does following  task:
+
+Postman is required to run the project.
+Provide your server port number to run this application.
+
+
+1)A user can open an account
+Url: localhost:8090/suncorp/newaccount
+MethodType: Post
+Sample Body: 
+{
+	"accountId":1234,
+	"amount":10000,
+	"firstName":"Umesh",
+	"lastName":"Pandey",
+	"dateOfBirth":"06-03-1987",
+	"accountCreationDate":"2019-06-27",
+	"accountType":"SAVINGS"
+}
+Response:
+{
+    "success": "true",
+    "AccountId": 1234
+}
+
+2) Registered User can deposit fund
+Url:
+localhost:8090/suncorp/deposit?transactionType=DEPOSIT
+MethodType: Put
+Sample Body:
+{
+	"accountId":1234,
+	"amount":100,
+	"firstName":"Umesh",
+	"lastName":"Pandey",
+	"dateOfBirth":"06-03-1987",
+	"accountCreationDate":"2019-06-27",
+	"accountType":"SAVINGS"
+}
+
+Sample Response:
+{
+    "success": "true",
+    "balance": 9900
+}
+
+3) Registered User can Withdraw Fund
+Url:
+localhost:8090/suncorp/withdraw?transactionType=WITHDRAWL
+MethodType: Put
+Sample Request Body:
+{
+	"accountId":1234,
+	"amount":100,
+	"firstName":"Umesh",
+	"lastName":"Pandey",
+	"dateOfBirth":"06-03-1987",
+	"accountCreationDate":"2019-06-27",
+	"accountType":"SAVINGS"
+}
+Sample Response:
+{
+    "success": "true",
+    "balance": 9700
+}
+4) View Transactions of Particular AccountId
+Url:
+localhost:8090/suncorp/viewtransaction?accountId=1234
+MethodType: Get
+Sample Response:
+
+[{"transactionId":2,"accountId":1,"transactionType":"DEPOSIT","depositedAmount":100.0,"withdrawlAmount":0.0},{"transactionId":3,"accountId":1,"transactionType":"WITHDRAWL","depositedAmount":0.0,"withdrawlAmount":1000.0},{"transactionId":4,"accountId":1,"transactionType":"DEPOSIT","depositedAmount":100.0,"withdrawlAmount":0.0}]
+
+
+5) Make Payment from one BankAccount to Other BankAccount
+
+Url:
+
+http://localhost:8090/suncorp/makepayment
+
+MethodType: PUT
+
+sample Request Body
+
+	{
+	
+	"payerAccountId":2,
+
+	"payeeAccountId":1,
+
+	"payerAmount":1000
+
+	
+} 
+
+Sample Response Body
+
+{
+    "success": "true",
+    "payeeId": 1,
+    "payeeBalance": 11100,
+    "payerId": 2,
+    "payerBalance": 9000
+}
+
+6) Change Account Type
+
+Url:
+
+localhost:8090/suncorp/accounttype?accountId=1&accountType=CURRENT
+
+MethodType: PUT
+
+Sample Response:
+
+{
+    "success": "true",
+    "Previous Account Type": "SAVINGS",
+    "Current Account Type": "CURRENT"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
